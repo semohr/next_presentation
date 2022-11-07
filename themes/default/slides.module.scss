@@ -1,3 +1,4 @@
+@use "./layouts/titlepage";
 @import "./colors.scss";
 
 .main {
@@ -23,7 +24,7 @@
 * 
 */
 .navbar {
-    height: 8%;
+    height: 5rem;
     display: grid;
     grid-template-columns: 1fr 10fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
@@ -72,16 +73,17 @@
         .current {
             width: 50%;
             text-align: right;
-            font-size: 4rem;
+            font-size: 2rem;
             color: $dark;
             margin-right: 0.5rem;
         }
 
         .total {
             width: 50%;
-            font-size: 2rem;
+            font-size: 1.5rem;
             color: $light;
             text-align: left;
+            font-weight: 300;
             &::before {
                 content: "/ ";
             }

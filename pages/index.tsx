@@ -2,7 +2,7 @@ import { usePresentation } from "lib/context";
 import { useRouter } from "next/router";
 import useResizeObserver from "@react-hook/resize-observer";
 import { useRef } from "react";
-import styles from "@themes/default/slides.module.scss";
+import styles from "@theme/slides.module.scss";
 import MdxSlide from "components/slides/Slide";
 
 /** Parsed query

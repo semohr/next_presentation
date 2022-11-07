@@ -1,5 +1,6 @@
-import styles from "@themes/default/layouts/titlepage.module.scss";
 import NavBar from "./NavBar";
+
+import styles from "@theme/slides.module.scss";
 
 export const Layouts = {
     // Layouts for slides
@@ -26,12 +27,12 @@ export const Layouts = {
             </div>
         ),
         h1: ({ children, ...props }) => (
-            <h1 className={styles.h1} {...props}>
+            <h1 className={styles.title} {...props}>
                 {children}
             </h1>
         ),
         h2: ({ children, ...props }) => (
-            <h2 className={styles.h2} {...props}>
+            <h2 className={styles.subtitle} {...props}>
                 {children}
             </h2>
         ),

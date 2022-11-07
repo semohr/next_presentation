@@ -1,5 +1,5 @@
 import { usePresentation } from "lib/context";
-import styles from "@themes/default/presenter.module.scss";
+import styles from "@theme/presenter.module.scss";
 import { useCallback, useEffect, useRef, useState } from "react";
 import useResizeObserver from "@react-hook/resize-observer";
 /** This shows the current and next slide

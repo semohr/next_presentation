@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { usePresentation } from "../../lib/context";
 
-import styles from "@themes/default/presenter.module.scss";
+import styles from "@theme/presenter.module.scss";
 
 interface Props extends React.HTMLAttributes<HTMLDivElement> {
     clock?: boolean;

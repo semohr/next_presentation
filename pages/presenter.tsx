@@ -6,7 +6,7 @@ import {
     ResizerHorizontal,
 } from "components/presenter";
 
-import styles from "@themes/default/presenter.module.scss";
+import styles from "@theme/presenter.module.scss";
 
 /** Presenter view
  * @param props

@@ -1,8 +1,8 @@
 import { usePresentation } from "lib/context";
-import logo from "@themes/default/logo.png";
+import logo from "@theme/logo.png";
 import Image from "next/image";
 
-import styles from "@themes/default/slides.module.scss";
+import styles from "@theme/slides.module.scss";
 
 interface Props extends React.HTMLAttributes<HTMLDivElement> {
     sections?: boolean;
@@ -15,7 +15,9 @@ export default function NavBar({ sections = true, ...divProps }: Props) {
     return (
         <div className={styles.navbar} {...divProps}>
             <Logo className={styles.Logo} />
-            <SectionProgress className={styles.SectionProgress} />
+            {sections ? (
+                <SectionProgress className={styles.SectionProgress} />
+            ) : null}
             <div className={styles.CurrentSlide}>
                 <div className={styles.current}>{currentSlideIndex + 1}</div>
                 <div className={styles.total}>{slides.length}</div>

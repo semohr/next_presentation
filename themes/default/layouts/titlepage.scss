@@ -28,7 +28,7 @@
 }
 
 // Title and subtitle
-.h1 {
+.title {
     padding: 0;
     margin: 0;
     display: flex;
@@ -41,10 +41,9 @@
     margin-bottom: 1rem;
     font-weight: 500;
     font-size: 5rem;
-    text-decoration: underline;
 }
 
-.h2 {
+.subtitle {
     padding: 0;
     margin: 0;
     display: flex;

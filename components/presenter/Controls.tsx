@@ -8,7 +8,7 @@ import {
 import { useEffect } from "react";
 import { useCallback } from "react";
 
-import styles from "@themes/default/presenter.module.scss";
+import styles from "@theme/presenter.module.scss";
 
 interface Props extends React.HTMLAttributes<HTMLDivElement> {}
 
