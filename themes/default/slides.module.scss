@@ -1,0 +1,198 @@
+@import "./colors.scss";
+
+.main {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: $dark;
+}
+
+.slide {
+    width: 100%;
+    height: 100%;
+}
+
+.title {
+}
+
+/** The Navbar is shown at the bottom of each
+* slide. It contains the slide number and the current section.
+* 
+*/
+.navbar {
+    height: 10%;
+    display: grid;
+    grid-template-columns: 1fr 10fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+
+    background-color: $accent;
+    border-top: 4px solid $dark;
+
+    .Logo {
+        grid-column: 1/2;
+        grid-row: 1/4;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 2em;
+        color: $dark;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .SectionProgress {
+        grid-column: 2;
+        grid-row: 1 / 4;
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        justify-content: center;
+    }
+    .CurrentSlide {
+        grid-column: 3;
+        grid-row: 1 / 4;
+        display: flex;
+        align-items: flex-end;
+        justify-content: flex-end;
+        padding: 1.5rem;
+
+        .current {
+            font-size: 4rem;
+        }
+        .total {
+            font-size: 2rem;
+            &::before {
+                content: "/";
+            }
+            color: $dark;
+        }
+    }
+}
+
+// Slides Component layout is done above
+// Here is just styling
+.slide {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    h1 {
+        text-align: center;
+        font-size: 4rem;
+    }
+    h2 {
+        text-align: center;
+        font-size: 3rem;
+    }
+    h3 {
+        text-align: center;
+        font-size: 2rem;
+    }
+    ul {
+        font-size: 3rem;
+    }
+}
+
+$mainColor: $primary;
+$baseColor: $dark;
+$radiusNode: 2rem;
+$widthEdge: 0.5rem;
+$borderWidth: calc($radiusNode / 4);
+
+// Progress bar showing the current slide
+// adapted from https://codepen.io/tsneville/pen/mPxLVR
+.progress {
+    // Styling the progress bar
+    // And sections
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: calc($radiusNode * 2 + $widthEdge * 2);
+
+    .label {
+        width: 100%;
+        text-align: center;
+        font-size: 1rem;
+        font-weight: bold;
+        font-family: sans-serif;
+    }
+    .bar {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: row;
+
+        .step {
+            width: 100%;
+            position: relative;
+
+            .node {
+                border: $borderWidth solid $baseColor;
+                background-color: $baseColor;
+                border-radius: $radiusNode;
+                height: $radiusNode;
+                width: $radiusNode;
+                position: absolute;
+                top: calc(50% - $radiusNode * 0.5);
+                left: 50%;
+                margin-left: calc(-1 * ($radiusNode - $borderWidth) / 2);
+            }
+
+            &:not(:last-child):before {
+                content: "";
+                display: block;
+                position: absolute;
+                left: 50%;
+                top: calc(50% - $widthEdge / 2);
+                background-color: $baseColor;
+                height: $widthEdge;
+                width: 100%;
+            }
+
+            /** Styling if a slide is completed */
+            &._completed {
+                &:before {
+                    background-color: $mainColor;
+                }
+                .node {
+                    background-color: $mainColor;
+                    border-color: $mainColor;
+                }
+            }
+
+            /** Styling if a slide is currently active
+            */
+            &._current {
+                .node {
+                    border-color: $mainColor;
+                }
+                &:before {
+                    // Add gradient to the edge
+                    background: $mainColor;
+                    background: -moz-linear-gradient(
+                        left,
+                        $mainColor 0%,
+                        $baseColor 100%
+                    );
+                    background: -webkit-linear-gradient(
+                        left,
+                        $mainColor 0%,
+                        $baseColor 100%
+                    );
+                    background: linear-gradient(
+                        to right,
+                        $mainColor 0%,
+                        $baseColor 100%
+                    );
+                }
+            }
+        }
+    }
+}

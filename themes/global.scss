@@ -1,0 +1,17 @@
+/** This is the global style file which defines mainly layout and typography styles. */
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Roboto";
+    font-size: 150%;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.react-icons {
+    vertical-align: middle;
+    background-color: aqua;
+}

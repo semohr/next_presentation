@@ -1,0 +1,23 @@
+@import "../colors.scss";
+
+// Show the title on the right as
+// a vertical text in  abox
+.Location {
+    padding: 0;
+    margin: 0;
+    background-color: $accent;
+    display: flex;
+    justify-content: baseline;
+
+    align-self: flex-end;
+    margin-top: 1rem;
+    margin-right: -2rem;
+    padding-right: 200px;
+    h3 {
+        background-color: $white;
+        font-weight: 400;
+        color: $dark;
+        padding: 1.5rem;
+        margin: 0;
+    }
+}
