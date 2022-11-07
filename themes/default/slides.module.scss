@@ -7,14 +7,15 @@
     flex-direction: column;
     justify-content: space-between;
     background-color: $dark;
+    color: $light;
 }
 
 .slide {
     width: 100%;
     height: 100%;
-}
-
-.title {
+    p {
+        margin: 0;
+    }
 }
 
 /** The Navbar is shown at the bottom of each
@@ -22,13 +23,18 @@
 * 
 */
 .navbar {
-    height: 10%;
+    height: 8%;
     display: grid;
     grid-template-columns: 1fr 10fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
 
     background-color: $accent;
-    border-top: 4px solid $dark;
+    border-top: 0.5rem solid $light;
+
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    overflow: hidden;
 
     .Logo {
         grid-column: 1/2;
@@ -36,8 +42,9 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        font-size: 2em;
-        color: $dark;
+        font-size: 1.2rem;
+        padding: 1rem;
+        color: $light;
         position: relative;
         display: flex;
         align-items: center;
@@ -57,19 +64,27 @@
         grid-column: 3;
         grid-row: 1 / 4;
         display: flex;
-        align-items: flex-end;
-        justify-content: flex-end;
+        justify-content: center;
+        align-items: center;
+
         padding: 1.5rem;
 
         .current {
+            width: 50%;
+            text-align: right;
             font-size: 4rem;
-        }
-        .total {
-            font-size: 2rem;
-            &::before {
-                content: "/";
-            }
             color: $dark;
+            margin-right: 0.5rem;
+        }
+
+        .total {
+            width: 50%;
+            font-size: 2rem;
+            color: $light;
+            text-align: left;
+            &::before {
+                content: "/ ";
+            }
         }
     }
 }
@@ -84,11 +99,11 @@
 
     h1 {
         text-align: center;
-        font-size: 4rem;
+        font-size: 5rem;
     }
     h2 {
         text-align: center;
-        font-size: 3rem;
+        font-size: 4rem;
     }
     h3 {
         text-align: center;
@@ -97,11 +112,14 @@
     ul {
         font-size: 3rem;
     }
+    p {
+        font-size: 2rem;
+    }
 }
 
-$mainColor: $primary;
-$baseColor: $dark;
-$radiusNode: 2rem;
+$mainColor: $dark;
+$baseColor: $light;
+$radiusNode: 1.5rem;
 $widthEdge: 0.5rem;
 $borderWidth: calc($radiusNode / 4);
 
@@ -119,9 +137,8 @@ $borderWidth: calc($radiusNode / 4);
     .label {
         width: 100%;
         text-align: center;
-        font-size: 1rem;
-        font-weight: bold;
-        font-family: sans-serif;
+        font-size: 1.2rem;
+        color: $light;
     }
     .bar {
         width: 100%;
@@ -141,15 +158,15 @@ $borderWidth: calc($radiusNode / 4);
                 width: $radiusNode;
                 position: absolute;
                 top: calc(50% - $radiusNode * 0.5);
-                left: 50%;
-                margin-left: calc(-1 * ($radiusNode - $borderWidth) / 2);
+                left: calc(50% - $radiusNode * 0.5);
+                margin-left: 0;
             }
 
             &:not(:last-child):before {
                 content: "";
                 display: block;
                 position: absolute;
-                left: 50%;
+                left: calc(50% - $radiusNode * 0.5);
                 top: calc(50% - $widthEdge / 2);
                 background-color: $baseColor;
                 height: $widthEdge;

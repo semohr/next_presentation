@@ -1,12 +1,8 @@
 import { usePresentation } from "lib/context";
 import { useRouter } from "next/router";
-import { useSlide, useSlides } from "lib/useSlide";
 import useResizeObserver from "@react-hook/resize-observer";
-import { MDXRemote } from "next-mdx-remote";
-import { useCallback, useEffect, useRef } from "react";
-
+import { useRef } from "react";
 import styles from "@themes/default/slides.module.scss";
-import NavBar from "components/slides/NavBar";
 import MdxSlide from "components/slides/Slide";
 
 /** Parsed query
@@ -27,13 +23,11 @@ export default function Index() {
             width: entry.contentRect.width,
             height: entry.contentRect.height,
         };
-        console.log("Set screen", screen);
         setScreen(screen);
     });
 
     var slide = currentSlide;
     if (query.next) {
-        console.log("Showing next slide");
         slide = nextSlide;
     }
 
@@ -47,7 +41,6 @@ export default function Index() {
     return (
         <main ref={container} className={styles.main}>
             <MdxSlide {...slide} className={styles.slide} />
-            <NavBar />
         </main>
     );
 }

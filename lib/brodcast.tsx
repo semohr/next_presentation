@@ -38,7 +38,6 @@ export function useBroadcast<S>(name, initialState: S) {
     useEffect(() => {
         const channel = new StrictBroadcastChannel<Action<S>>(name);
         channel.onmessage = (event) => {
-            console.log("Received message", event.data);
             event.preventDefault();
             dispatch(event.data);
         };

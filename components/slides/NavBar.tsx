@@ -28,11 +28,16 @@ function SectionProgress(props: React.HTMLAttributes<HTMLDivElement>) {
     const { currentSlideIndex, slides } = usePresentation();
 
     // Count the sections
+    let offset = 0;
     const sections_count: Record<string, number> = slides.reduce(function (
         p,
         c
     ) {
         const sec = c.fontMatter.section;
+        if (!sec) {
+            offset += 1;
+            return p;
+        }
         if (sec in p) {
             p[sec]++;
         } else {
@@ -45,7 +50,6 @@ function SectionProgress(props: React.HTMLAttributes<HTMLDivElement>) {
     // For each section construct a progress bar
     const sections_progress = [];
 
-    let offset = 0;
     Object.entries(sections_count).forEach((sec) => {
         const sec_name = sec[0];
         const sec_count = sec[1];
@@ -113,7 +117,7 @@ function ProgressBar({ current, total, label, ...divProps }: PropsProgress) {
 function Logo({ ...divProps }: React.HTMLAttributes<HTMLDivElement>) {
     return (
         <div className={styles.logo} {...divProps}>
-            <Image src={logo} alt="Logo" layout="fill" />
+            Sebastian B. Mohr
         </div>
     );
 }

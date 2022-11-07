@@ -17,17 +17,17 @@ export default function MdxSlide({
     var components;
 
     // Parse different layouts to of slides
-    if (fontMatter.layout && fontMatter.layout in Layouts) {
-        console.log("Using layout", fontMatter.layout);
-        components = Layouts[fontMatter.layout];
+    if (fontMatter && fontMatter.layout && fontMatter.layout in Layouts) {
+        // append layout components to components
+        components = { ...Layouts[fontMatter.layout], ...Layouts.default };
     } else {
-        components = Layouts["default"];
+        components = { ...Layouts.default };
     }
 
     return (
         <div {...divProps}>
             {source == "NEXT_SLIDE_NOT_FOUND" ? (
-                <p>No next slide</p>
+                <h1 style={{ fontSize: "10rem" }}>No next slide</h1>
             ) : (
                 <MDXRemote {...source} components={components} />
             )}

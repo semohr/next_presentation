@@ -3,21 +3,82 @@
 // Show the title on the right as
 // a vertical text in  abox
 .Location {
+    justify-content: baseline;
+    position: relative;
+    top: 0;
+
     padding: 0;
     margin: 0;
     background-color: $accent;
     display: flex;
-    justify-content: baseline;
 
     align-self: flex-end;
     margin-top: 1rem;
     margin-right: -2rem;
-    padding-right: 200px;
+
     h3 {
-        background-color: $white;
-        font-weight: 400;
+        &:first-child {
+            background-color: $white;
+        }
+        font-weight: 300;
         color: $dark;
         padding: 1.5rem;
         margin: 0;
     }
+}
+
+// Title and subtitle
+.h1 {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: baseline;
+
+    align-self: flex-start;
+    margin-top: 18rem;
+    margin-left: 10%;
+    top: 50%;
+    margin-bottom: 1rem;
+    font-weight: 500;
+    font-size: 5rem;
+    text-decoration: underline;
+}
+
+.h2 {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: baseline;
+
+    align-self: flex-start;
+    margin-left: 15%;
+    margin-bottom: 3rem;
+    font-weight: 300;
+    color: $primary;
+}
+
+.Date {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: baseline;
+
+    align-self: flex-start;
+    margin-left: 15%;
+    font-weight: 300;
+    color: $primary;
+}
+
+.Author {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: baseline;
+    position: relative;
+    bottom: 0;
+
+    align-self: flex-start;
+    margin-left: 15%;
+    font-weight: 300;
+    color: $primary;
 }

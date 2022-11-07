@@ -18,7 +18,8 @@ export default function Preview(props: React.HTMLAttributes<HTMLDivElement>) {
     const update_size = useCallback(() => {
         if (container.current) {
             // Get height/width of container
-            const height = container.current.clientHeight;
+
+            const height = container.current.clientHeight - 16; // 16px border
             const width = container.current.clientWidth;
 
             // Fit current slide to container
@@ -48,43 +49,45 @@ export default function Preview(props: React.HTMLAttributes<HTMLDivElement>) {
 
     return (
         <div {...props} ref={container}>
-            <div
-                className={styles.current}
-                style={{
-                    height: screen.height * scale_current + "px",
-                    width: screen.width * scale_current + "px",
-                }}
-            >
-                <iframe
-                    src="/?preview=true"
-                    frameBorder="0"
+            <div className={styles.current}>
+                <div
                     style={{
-                        transformOrigin: "0 0",
-                        transform: `scale(${scale_current})`,
-                        height: screen.height + "px",
-                        width: screen.width + "px",
-                        overflow: "hidden",
+                        height: screen.height * scale_current + "px",
+                        width: screen.width * scale_current + "px",
                     }}
-                />
+                >
+                    <iframe
+                        src="/?preview=true"
+                        frameBorder="0"
+                        style={{
+                            transformOrigin: "0 0",
+                            transform: `scale(${scale_current})`,
+                            height: screen.height + "px",
+                            width: screen.width + "px",
+                            overflow: "hidden",
+                        }}
+                    />
+                </div>
             </div>
-            <div
-                style={{
-                    height: screen.height * scale_next + "px",
-                    width: screen.width * scale_next + "px",
-                }}
-                className={styles.next}
-            >
-                <iframe
-                    src="/?preview=true&next=true"
-                    frameBorder="0"
+            <div className={styles.next}>
+                <div
                     style={{
-                        transformOrigin: "top left",
-                        transform: `scale(${scale_next})`,
-                        height: screen.height + "px",
-                        width: screen.width + "px",
-                        overflow: "hidden",
+                        height: screen.height * scale_next + "px",
+                        width: screen.width * scale_next + "px",
                     }}
-                />
+                >
+                    <iframe
+                        src="/?preview=true&next=true"
+                        frameBorder="0"
+                        style={{
+                            transformOrigin: "top left",
+                            transform: `scale(${scale_next})`,
+                            height: screen.height + "px",
+                            width: screen.width + "px",
+                            overflow: "hidden",
+                        }}
+                    />
+                </div>
             </div>
         </div>
     );
