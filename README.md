@@ -51,7 +51,7 @@ section: Introduction
 <Navbar />
 ```
 
-You can also add notes to your slide using the `notes` tag in the markdown file. All occurences of the `notes` tag will be rendered in the presenter view. (WIP)
+You can also add notes to your slide using the `notes` tag in the markdown file. All occurrences of the `notes` tag will be rendered in the presenter view.
 
 ```mdx
 <Notes>This is a note</Notes>
