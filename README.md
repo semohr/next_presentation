@@ -2,13 +2,15 @@
 
 Next presentation is a simple but highly customizable and flexible presentation framework based on react, nextjs, javascript and mdx. It allows you to quickly create presentations using markdown format, create your own theme and add custom components via jsx.
 
+
+**Check out the [demo](https://next-presentation.vercel.app/)!**
+
 ## Features
 
 -   Customizable presenter view
 -   Slides in markdown with jsx components support
 -   Customizable theme
 
-For a live demo, check out [next-presentation](https://next-presentation.vercel.app/)!
 
 ## Getting Started
 
