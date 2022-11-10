@@ -75,7 +75,8 @@
     justify-content: baseline;
     position: relative;
     bottom: 0;
-
+    //Disable wrrap
+    white-space: nowrap;
     align-self: flex-start;
     margin-left: 15%;
     font-weight: 300;
