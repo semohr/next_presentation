@@ -1,4 +1,5 @@
 import NavBar from "./NavBar";
+import { SlideControl } from "./Utils";
 
 import styles from "@theme/slides.module.scss";
 
@@ -8,6 +9,7 @@ export const Layouts = {
     // ---
     default: {
         Navbar: (props) => <NavBar {...props} />,
+        SlideControl: (props) => <SlideControl {...props} />,
     },
     titlepage: {
         Location: ({ loc1, loc2, ...props }) => (

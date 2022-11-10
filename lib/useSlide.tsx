@@ -23,7 +23,9 @@ export function useSlide(slide_number: number) {
 }
 
 export function useSlides() {
-    const { data, error } = useSWR<Slide[], Error>(`/api/slides`, fetcher);
+    const { data, error } = useSWR<Slide[], Error>(`/api/slides`, fetcher, {
+        refreshInterval: 1000,
+    });
 
     return {
         slides: data,

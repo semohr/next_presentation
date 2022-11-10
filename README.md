@@ -1,6 +1,6 @@
 # Next Presentation
 
-Next presentation is a simple but highly customizable and flexible presentation framework based on react, nextjs, javscript and mdx. It allows you to quickly create presentations using markdown format, create your own theme and add custom components via jsx.
+Next presentation is a simple but highly customizable and flexible presentation framework based on react, nextjs, javascript and mdx. It allows you to quickly create presentations using markdown format, create your own theme and add custom components via jsx.
 
 ## Features
 
@@ -23,9 +23,9 @@ yarn install
 You can than run the dev server to start working on your presentation:
 
 ```bash
-npm run dev:watch
+npm run dev
 #or with yarn
-yarn dev:watch
+yarn dev
 ```
 
 This automatically watches for changes in the `./slides` folder and reloads the browser if any changes are detected.

@@ -84,6 +84,8 @@
             color: $light;
             text-align: left;
             font-weight: 300;
+            // no text wrap
+            white-space: nowrap;
             &::before {
                 content: "/ ";
             }
@@ -102,10 +104,14 @@
     h1 {
         text-align: center;
         font-size: 5rem;
+        align-self: baseline;
+        color: $primary;
     }
     h2 {
         text-align: center;
-        font-size: 4rem;
+        font-size: 3.5rem;
+        align-self: baseline;
+        color: $primary;
     }
     h3 {
         text-align: center;
@@ -116,6 +122,23 @@
     }
     p {
         font-size: 2rem;
+        width: 80%;
+    }
+
+    a {
+        color: $secondary;
+        text-decoration: none;
+        font-weight: 500;
+    }
+
+    pre {
+        font-size: 1.5rem;
+        width: 80%;
+        background-color: $dark;
+        color: $light;
+        padding: 1rem;
+        border-radius: 0.5rem;
+        border: 0.5rem solid $light;
     }
 }
 
@@ -212,6 +235,62 @@ $borderWidth: calc($radiusNode / 4);
                     );
                 }
             }
+        }
+    }
+}
+
+/** Slide control component for example presentation 
+* 
+*/
+.SlideControl {
+    position: absolute;
+    top: 75%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 5rem;
+        width: fit-content;
+        padding-inline: 0;
+        color: $accent;
+        cursor: pointer;
+        position: relative;
+
+        svg {
+            color: $accent;
+            width: fit-content;
+        }
+
+        &:hover {
+            color: $accent;
+        }
+    }
+    .next {
+        &::before {
+            content: "";
+            display: block;
+            width: 10px;
+            height: calc(100% + 4px);
+            right: 75%;
+            position: absolute;
+            background-color: $dark;
+        }
+    }
+
+    .prev {
+        &::before {
+            content: "";
+            display: block;
+            width: 10px;
+            height: calc(100% + 4px);
+            left: 75%;
+            position: absolute;
+            background-color: $dark;
         }
     }
 }

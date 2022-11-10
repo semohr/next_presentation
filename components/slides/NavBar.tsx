@@ -1,6 +1,4 @@
 import { usePresentation } from "lib/context";
-import logo from "@theme/logo.png";
-import Image from "next/image";
 
 import styles from "@theme/slides.module.scss";
 
