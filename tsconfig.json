@@ -17,8 +17,7 @@
         "baseUrl": ".",
         "paths": {
             "@theme/*": ["themes/default/*"],
-            "@colors": ["@theme/colors.scss"],
-            "@img/*": ["../img/*"]
+            "@colors": ["@theme/colors.scss"]
         },
         "plugins": [
             {

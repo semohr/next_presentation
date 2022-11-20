@@ -1,7 +1,7 @@
 import { usePresentation } from "lib/context";
 import { useRouter } from "next/router";
 import useResizeObserver from "@react-hook/resize-observer";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import styles from "@theme/slides.module.scss";
 import MdxSlide from "components/slides/Slide";
 
@@ -13,14 +13,12 @@ export default function Index() {
     const { currentSlide, setScreen, nextSlide, isLoading, isError } =
         usePresentation();
     const { query, isReady } = useRouter();
-    const [container, setContainer] = useState<HTMLElement>();
+    const container = useRef<HTMLDivElement>(null);
 
     // Check aspect ratio of container and
     // set aspect ratio of presentation
     useResizeObserver(container, (entry) => {
-        if (!isReady || query.preview) {
-            return;
-        }
+        if (!isReady || query.preview) return;
         const screen = {
             width: entry.contentRect.width,
             height: entry.contentRect.height,
@@ -41,7 +39,7 @@ export default function Index() {
 
     // If slide data is available, show slide
     return (
-        <main ref={setContainer} className={styles.main}>
+        <main ref={container} className={styles.main}>
             <MdxSlide {...slide} className={styles.slide} />
         </main>
     );

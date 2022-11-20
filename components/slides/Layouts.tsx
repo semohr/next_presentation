@@ -2,10 +2,6 @@ import NavBar from "./NavBar";
 import { SlideControl } from "./Utils";
 
 import styles from "@theme/slides.module.scss";
-import Image from "next/image";
-
-// Custom Layouts
-import { TypesGraph } from "components/Charts";
 
 export const Layouts = {
     // Layouts for slides
@@ -14,7 +10,6 @@ export const Layouts = {
     default: {
         Navbar: (props) => <NavBar {...props} />,
         SlideControl: (props) => <SlideControl {...props} />,
-        Image: (props) => <Image {...props} />,
     },
     titlepage: {
         Location: ({ loc1, loc2, ...props }) => (
@@ -43,8 +38,5 @@ export const Layouts = {
                 {children}
             </h2>
         ),
-    },
-    sql: {
-        TypesGraph: (props) => <TypesGraph {...props} />,
     },
 };
