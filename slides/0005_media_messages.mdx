@@ -1,0 +1,73 @@
+---
+layout: sql
+section: Messages
+---
+
+<div
+    style={{
+        width: "50%",
+        height: "90vh",
+        position: "absolute",
+        left: "0",
+        paddingInline: "4rem",
+    }}
+
+>
+
+# Media
+
+-   Messages may contain media i.e. attachments
+-   A variety of media types are supported
+-   The list of types is always adapting and changing
+
+```
+AUDIO
+DOCUMENT
+PHOTO
+STICKER
+VIDEO
+ANIMATION
+VOICE
+VIDEO_NOTE
+CONTACT
+LOCATION
+VENUE
+POLL
+WEB_PAGE
+DICE
+GAME
+```
+
+<Note>
+    ```SELECT COALESCE(type,"RAW") as type, COUNT(*) * 100.0/ sum(COUNT(*)) over
+    () as percent FROM messages GROUP BY type; ```
+</Note>
+
+</div>
+
+<div
+    style={{
+        width: "50%",
+        height: "90%",
+        position: "absolute",
+        right: "0",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+    }}
+
+>
+
+<TypesGraph
+    style={{
+        width: "100%",
+        display: "flex",
+        flexDirection: "column",
+    }}
+/>
+
+</div>
+
+<SlideControl />
+
+<Navbar />
