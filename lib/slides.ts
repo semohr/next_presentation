@@ -9,6 +9,7 @@ export const SLIDES_PATH = path.join(process.cwd(), 'slides');
 export interface Slide {
     fontMatter: any;
     source: any;
+    notes: any;
 }
 
 /** Get a slide from the
@@ -19,7 +20,21 @@ export async function getSlide(fName: string): Promise<Slide> {
     const source = await fs.readFile(filePath);
     const { content, data } = matter(source);
 
-    const mdxSource = await serialize(content, {
+    // Get all note tags from the slide.
+    var notes = '';
+    const re = /<Note>(.*?)<\/Note>/gs;
+    //matchall
+    let match;
+    while ((match = re.exec(content))) {
+        notes += match[1];
+    }
+
+    // Remove all note tags from the slide.
+    const slide = content.replaceAll(/<Note>(.*?)<\/Note>/gs, '');
+
+    const mdxNotes = await serialize(notes, { scope: data });
+
+    const mdxSource = await serialize(slide, {
         // Optionally pass remark/rehype plugins
         mdxOptions: {
             remarkPlugins: [],
@@ -30,7 +45,8 @@ export async function getSlide(fName: string): Promise<Slide> {
 
     return {
         fontMatter: data,
-        source: mdxSource
+        source: mdxSource,
+        notes: mdxNotes
     };
 }
 

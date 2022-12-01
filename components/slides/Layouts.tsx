@@ -38,5 +38,8 @@ export const Layouts = {
                 {children}
             </h2>
         )
+    },
+    row: {
+        Column: (props) => <div className={styles.column} {...props} />
     }
 };

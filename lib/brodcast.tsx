@@ -1,14 +1,8 @@
+'use strict';
 import { useEffect, useReducer, useState } from 'react';
 
 // Strictly type the Broadcast channel to allow
 // for type checking of the message
-export class StrictBroadcastChannel<
-    T extends Record<string, any>
-> extends BroadcastChannel {
-    public postMessage(message: T): void {
-        return super.postMessage(message);
-    }
-}
 
 type Action<S> = { type: 'set'; state: S };
 
@@ -30,14 +24,14 @@ const createReducer =
  *  (see) https://developer.mozilla.org/en-US/docs/Web/API/BroadcastChannel/BroadcastChannel
  */
 export function useBroadcast<S>(name, initialState: S) {
-    const [channel, setChannel] = useState<StrictBroadcastChannel<Action<S>>>();
+    const [channel, setChannel] = useState<BroadcastChannel>();
     const reducer = createReducer<S>();
     let [state, dispatch] = useReducer(reducer, initialState);
 
     // This makes sure we always have only one channel
     useEffect(() => {
-        const channel = new StrictBroadcastChannel<Action<S>>(name);
-        channel.onmessage = (event) => {
+        const channel = new BroadcastChannel(name);
+        channel.onmessage = (event: MessageEvent) => {
             event.preventDefault();
             dispatch(event.data);
         };
