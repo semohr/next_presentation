@@ -1,5 +1,5 @@
-import useSWR, { Fetcher } from "swr";
-import { Slide } from "./slides";
+import useSWR, { Fetcher } from 'swr';
+import { Slide } from './slides';
 
 /** Get all slides from the
  * api. (Client-side)
@@ -18,18 +18,18 @@ export function useSlide(slide_number: number) {
     return {
         slide: data,
         isLoading: !error && !data,
-        isError: error,
+        isError: error
     };
 }
 
 export function useSlides() {
     const { data, error } = useSWR<Slide[], Error>(`/api/slides`, fetcher, {
-        refreshInterval: 1000,
+        refreshInterval: 1000
     });
 
     return {
         slides: data,
         isLoading: !error && !data,
-        isError: error,
+        isError: error
     };
 }

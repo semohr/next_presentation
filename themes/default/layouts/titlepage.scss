@@ -1,11 +1,16 @@
-@import "../colors.scss";
+@import '../colors.scss';
+
+.titlepage {
+    justify-content: center;
+}
 
 // Show the title on the right as
 // a vertical text in  abox
 .Location {
     justify-content: baseline;
-    position: relative;
-    top: 0;
+    position: absolute;
+    align-self: flex-start;
+    top: 5%;
 
     padding: 0;
     margin: 0;
@@ -52,7 +57,7 @@
     align-self: flex-start;
     margin-left: 15%;
     margin-bottom: 3rem;
-    font-weight: 300;
+    font-weight: 400;
     color: $primary;
 }
 

@@ -1,4 +1,4 @@
-import { allSlidesSorted } from "lib/slides";
+import { allSlidesSorted } from 'lib/slides';
 
 export default async function handler(req, res) {
     const slides = await allSlidesSorted();

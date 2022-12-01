@@ -1,15 +1,14 @@
-import path from "path";
-import fs from "fs/promises";
-import matter from "gray-matter";
-import { serialize } from "next-mdx-remote/serialize";
+import path from 'path';
+import fs from 'fs/promises';
+import matter from 'gray-matter';
+import { serialize } from 'next-mdx-remote/serialize';
 
 // Where the slides are stored.
-export const SLIDES_PATH = path.join(process.cwd(), "slides");
+export const SLIDES_PATH = path.join(process.cwd(), 'slides');
 
 export interface Slide {
     fontMatter: any;
     source: any;
-    notes: any;
 }
 
 /** Get a slide from the
@@ -20,33 +19,18 @@ export async function getSlide(fName: string): Promise<Slide> {
     const source = await fs.readFile(filePath);
     const { content, data } = matter(source);
 
-    // Get all note tags from the slide.
-    var notes = "";
-    const re = /<Note>(.*?)<\/Note>/gs;
-    //matchall
-    let match;
-    while ((match = re.exec(content))) {
-        notes += match[1];
-    }
-
-    // Remove all note tags from the slide.
-    const slide = content.replaceAll(/<Note>(.*?)<\/Note>/gs, "");
-
-    const mdxNotes = await serialize(notes, { scope: data });
-
-    const mdxSource = await serialize(slide, {
+    const mdxSource = await serialize(content, {
         // Optionally pass remark/rehype plugins
         mdxOptions: {
             remarkPlugins: [],
-            rehypePlugins: [],
+            rehypePlugins: []
         },
-        scope: data,
+        scope: data
     });
 
     return {
         fontMatter: data,
-        source: mdxSource,
-        notes: mdxNotes,
+        source: mdxSource
     };
 }
 
@@ -55,7 +39,7 @@ export async function allSlidesSorted(): Promise<Slide[]> {
     const fileNames = await fs.readdir(SLIDES_PATH);
     const allSlidesData = await Promise.all(
         fileNames.map(async (fileName) => {
-            const fName = fileName.replace(/\.mdx$/, "");
+            const fName = fileName.replace(/\.mdx$/, '');
             const slide = await getSlide(fName);
             return slide;
         })

@@ -1,7 +1,7 @@
-import { usePresentation } from "lib/context";
-import styles from "@theme/presenter.module.scss";
-import { useCallback, useEffect, useRef, useState } from "react";
-import useResizeObserver from "@react-hook/resize-observer";
+import { usePresentation } from 'lib/context';
+import styles from '@theme/presenter.module.scss';
+import { useCallback, useEffect, useRef, useState } from 'react';
+import useResizeObserver from '@react-hook/resize-observer';
 /** This shows the current and next slide
  * in the presenter view. Depending on the parents
  * size, it will show the current slide in full width
@@ -52,19 +52,19 @@ export default function Preview(props: React.HTMLAttributes<HTMLDivElement>) {
             <div className={styles.current}>
                 <div
                     style={{
-                        height: screen.height * scale_current + "px",
-                        width: screen.width * scale_current + "px",
+                        height: screen.height * scale_current + 'px',
+                        width: screen.width * scale_current + 'px'
                     }}
                 >
                     <iframe
                         src="/?preview=true"
                         frameBorder="0"
                         style={{
-                            transformOrigin: "0 0",
+                            transformOrigin: '0 0',
                             transform: `scale(${scale_current})`,
-                            height: screen.height + "px",
-                            width: screen.width + "px",
-                            overflow: "hidden",
+                            height: screen.height + 'px',
+                            width: screen.width + 'px',
+                            overflow: 'hidden'
                         }}
                     />
                 </div>
@@ -72,19 +72,19 @@ export default function Preview(props: React.HTMLAttributes<HTMLDivElement>) {
             <div className={styles.next}>
                 <div
                     style={{
-                        height: screen.height * scale_next + "px",
-                        width: screen.width * scale_next + "px",
+                        height: screen.height * scale_next + 'px',
+                        width: screen.width * scale_next + 'px'
                     }}
                 >
                     <iframe
                         src="/?preview=true&next=true"
                         frameBorder="0"
                         style={{
-                            transformOrigin: "top left",
+                            transformOrigin: 'top left',
                             transform: `scale(${scale_next})`,
-                            height: screen.height + "px",
-                            width: screen.width + "px",
-                            overflow: "hidden",
+                            height: screen.height + 'px',
+                            width: screen.width + 'px',
+                            overflow: 'hidden'
                         }}
                     />
                 </div>

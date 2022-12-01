@@ -1,7 +1,7 @@
-import { createContext, Dispatch, useContext } from "react";
-import { useBroadcast } from "./brodcast";
-import { Slide } from "./slides";
-import { useSlides } from "./useSlide";
+import { createContext, Dispatch, useContext } from 'react';
+import { useBroadcast } from './brodcast';
+import { Slide } from './slides';
+import { useSlides } from './useSlide';
 
 interface Screen {
     width: number;
@@ -52,14 +52,14 @@ export function ContextProvider({ children }) {
     const { slides, isLoading, isError } = useSlides();
 
     const { state, setState } = useBroadcast<DataTypeBroadcast>(
-        "next_presenter",
+        'next_presenter',
         {
             currentSlideIndex: 0,
             paused: false,
             screen: {
                 width: 1920,
-                height: 1080,
-            },
+                height: 1080
+            }
         }
     );
 
@@ -93,7 +93,7 @@ export function ContextProvider({ children }) {
         // Next slide checks bounds
         if (state.currentSlideIndex + 1 >= slides.length) {
             nextSlide = {
-                source: "NEXT_SLIDE_NOT_FOUND",
+                source: 'NEXT_SLIDE_NOT_FOUND'
             };
         } else {
             nextSlide = slides[state.currentSlideIndex + 1];
@@ -122,7 +122,7 @@ export function ContextProvider({ children }) {
         setScreen,
 
         isLoading,
-        isError,
+        isError
     };
 
     return <Context.Provider value={ret}>{children}</Context.Provider>;

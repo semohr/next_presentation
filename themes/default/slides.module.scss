@@ -1,5 +1,6 @@
-@use "./layouts/titlepage";
-@import "./colors.scss";
+@use './layouts/titlepage';
+@use './layouts/row';
+@import './colors.scss';
 
 .main {
     width: 100vw;
@@ -11,29 +12,40 @@
     color: $light;
 }
 
+$navbar-height: 5rem;
 .slide {
+    height: calc(100% - $navbar-height);
     width: 100%;
-    height: 100%;
+    position: relative;
+
     p {
         margin: 0;
+        padding-bottom: 2rem;
     }
+    ul {
+        margin: 0;
+    }
+
+    border-top: 5px solid $light;
 }
 
 /** The Navbar is shown at the bottom of each
 * slide. It contains the slide number and the current section.
 * 
 */
+
 .navbar {
-    height: 5rem;
+    height: $navbar-height;
     display: grid;
-    grid-template-columns: 1fr 10fr 1fr;
+    grid-template-columns: 2fr 10fr 2fr;
     grid-template-rows: 1fr 1fr 1fr;
 
     background-color: $accent;
     border-top: 0.5rem solid $light;
 
-    position: absolute;
+    position: fixed;
     bottom: 0;
+    left: 0;
     width: 100%;
     overflow: hidden;
 
@@ -50,7 +62,8 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        text-align: center;
+        text-align: left;
+        width: 100%;
     }
 
     .SectionProgress {
@@ -87,7 +100,7 @@
             // no text wrap
             white-space: nowrap;
             &::before {
-                content: "/ ";
+                content: '/ ';
             }
         }
     }
@@ -106,6 +119,7 @@
         font-size: 5rem;
         align-self: baseline;
         color: $primary;
+        margin-top: 0;
     }
     h2 {
         text-align: center;
@@ -118,11 +132,11 @@
         font-size: 2rem;
     }
     ul {
-        font-size: 3rem;
+        font-size: 2.5rem;
     }
     p {
         font-size: 2rem;
-        width: 80%;
+        text-align: left;
     }
 
     a {
@@ -188,7 +202,7 @@ $borderWidth: calc($radiusNode / 4);
             }
 
             &:not(:last-child):before {
-                content: "";
+                content: '';
                 display: block;
                 position: absolute;
                 left: calc(50% - $radiusNode * 0.5);
@@ -245,6 +259,7 @@ $borderWidth: calc($radiusNode / 4);
 .SlideControl {
     position: absolute;
     top: 75%;
+    left: 0;
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -272,7 +287,7 @@ $borderWidth: calc($radiusNode / 4);
     }
     .next {
         &::before {
-            content: "";
+            content: '';
             display: block;
             width: 10px;
             height: calc(100% + 4px);
@@ -284,7 +299,7 @@ $borderWidth: calc($radiusNode / 4);
 
     .prev {
         &::before {
-            content: "";
+            content: '';
             display: block;
             width: 10px;
             height: calc(100% + 4px);

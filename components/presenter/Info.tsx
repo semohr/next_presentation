@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
-import { usePresentation } from "../../lib/context";
+import { useEffect, useState } from 'react';
+import { usePresentation } from '../../lib/context';
 
-import styles from "@theme/presenter.module.scss";
+import styles from '@theme/presenter.module.scss';
 
 interface Props extends React.HTMLAttributes<HTMLDivElement> {
     clock?: boolean;
@@ -66,7 +66,7 @@ function Timer(props: React.HTMLAttributes<HTMLDivElement>) {
     const [delta, setDelta] = useState({
         hours: 0,
         minutes: 0,
-        seconds: 0,
+        seconds: 0
     });
     useEffect(() => {
         if (!started) return;
@@ -75,7 +75,7 @@ function Timer(props: React.HTMLAttributes<HTMLDivElement>) {
             setDelta({
                 hours: Math.floor(delta / 1000 / 60 / 60),
                 minutes: Math.floor(delta / 1000 / 60) % 60,
-                seconds: Math.floor(delta / 1000) % 60,
+                seconds: Math.floor(delta / 1000) % 60
             });
         }, 1000);
         return () => clearInterval(timer);
@@ -85,9 +85,9 @@ function Timer(props: React.HTMLAttributes<HTMLDivElement>) {
         <div {...props}>
             <label>Timer</label>
             <span>
-                {delta.hours.toString().padStart(2, "0")}:
-                {delta.minutes.toString().padStart(2, "0")}:
-                {delta.seconds.toString().padStart(2, "0")}
+                {delta.hours.toString().padStart(2, '0')}:
+                {delta.minutes.toString().padStart(2, '0')}:
+                {delta.seconds.toString().padStart(2, '0')}
             </span>
         </div>
     );

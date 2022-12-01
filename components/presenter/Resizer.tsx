@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 interface Props extends React.HTMLAttributes<HTMLDivElement> {
     min_previous?: number;
@@ -47,8 +47,8 @@ export default function ResizerHorizontal({
         prevWidth = previousElementRef.current.getBoundingClientRect().width;
 
         // Attach the listeners to `document`
-        document.addEventListener("mousemove", mouseMoveHandler);
-        document.addEventListener("mouseup", mouseUpHandler);
+        document.addEventListener('mousemove', mouseMoveHandler);
+        document.addEventListener('mouseup', mouseUpHandler);
     }
 
     function mouseMoveHandler(e: MouseEvent) {
@@ -68,32 +68,32 @@ export default function ResizerHorizontal({
             100 - newPrevWidth
         }% - 10px)`; //10px resizer size
 
-        resizerRef.current.style.cursor = "col-resize";
-        document.body.style.cursor = "col-resize";
+        resizerRef.current.style.cursor = 'col-resize';
+        document.body.style.cursor = 'col-resize';
 
-        previousElementRef.current.style.userSelect = "none";
-        previousElementRef.current.style.pointerEvents = "none";
+        previousElementRef.current.style.userSelect = 'none';
+        previousElementRef.current.style.pointerEvents = 'none';
 
-        nextElementRef.current.style.userSelect = "none";
-        nextElementRef.current.style.pointerEvents = "none";
+        nextElementRef.current.style.userSelect = 'none';
+        nextElementRef.current.style.pointerEvents = 'none';
 
-        nextElementRef.current.style.userSelect = "none";
-        nextElementRef.current.style.pointerEvents = "none";
+        nextElementRef.current.style.userSelect = 'none';
+        nextElementRef.current.style.pointerEvents = 'none';
     }
 
     function mouseUpHandler() {
-        resizerRef.current.style.removeProperty("cursor");
-        document.body.style.removeProperty("cursor");
+        resizerRef.current.style.removeProperty('cursor');
+        document.body.style.removeProperty('cursor');
 
-        previousElementRef.current.style.removeProperty("user-select");
-        previousElementRef.current.style.removeProperty("pointer-events");
+        previousElementRef.current.style.removeProperty('user-select');
+        previousElementRef.current.style.removeProperty('pointer-events');
 
-        nextElementRef.current.style.removeProperty("user-select");
-        nextElementRef.current.style.removeProperty("pointer-events");
+        nextElementRef.current.style.removeProperty('user-select');
+        nextElementRef.current.style.removeProperty('pointer-events');
 
         // Remove the handlers of `mousemove` and `mouseup`
-        document.removeEventListener("mousemove", mouseMoveHandler);
-        document.removeEventListener("mouseup", mouseUpHandler);
+        document.removeEventListener('mousemove', mouseMoveHandler);
+        document.removeEventListener('mouseup', mouseUpHandler);
     }
 
     return (

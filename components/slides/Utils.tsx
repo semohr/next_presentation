@@ -1,7 +1,7 @@
-import { usePresentation } from "lib/context";
-import { BsChevronCompactLeft, BsChevronCompactRight } from "react-icons/bs";
+import { usePresentation } from 'lib/context';
+import { BsChevronCompactLeft, BsChevronCompactRight } from 'react-icons/bs';
 
-import styles from "@theme/slides.module.scss";
+import styles from '@theme/slides.module.scss';
 
 /** Allows you to change change the current
  * presentation slide form the slides view

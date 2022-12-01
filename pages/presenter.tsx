@@ -3,10 +3,10 @@ import {
     Info,
     Notes,
     Preview,
-    ResizerHorizontal,
-} from "components/presenter";
+    ResizerHorizontal
+} from 'components/presenter';
 
-import styles from "@theme/presenter.module.scss";
+import styles from '@theme/presenter.module.scss';
 
 /** Presenter view
  * @param props

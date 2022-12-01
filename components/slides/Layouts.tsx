@@ -1,7 +1,7 @@
-import NavBar from "./NavBar";
-import { SlideControl } from "./Utils";
+import NavBar from './NavBar';
+import { SlideControl } from './Utils';
 
-import styles from "@theme/slides.module.scss";
+import styles from '@theme/slides.module.scss';
 
 export const Layouts = {
     // Layouts for slides
@@ -9,7 +9,7 @@ export const Layouts = {
     // ---
     default: {
         Navbar: (props) => <NavBar {...props} />,
-        SlideControl: (props) => <SlideControl {...props} />,
+        SlideControl: (props) => <SlideControl {...props} />
     },
     titlepage: {
         Location: ({ loc1, loc2, ...props }) => (
@@ -37,6 +37,6 @@ export const Layouts = {
             <h2 className={styles.subtitle} {...props}>
                 {children}
             </h2>
-        ),
-    },
+        )
+    }
 };

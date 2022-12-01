@@ -1,21 +1,27 @@
-"use strict";
-import { useEffect, useReducer, useState } from "react";
+import { useEffect, useReducer, useState } from 'react';
 
 // Strictly type the Broadcast channel to allow
 // for type checking of the message
+export class StrictBroadcastChannel<
+    T extends Record<string, any>
+> extends BroadcastChannel {
+    public postMessage(message: T): void {
+        return super.postMessage(message);
+    }
+}
 
-type Action<S> = { type: "set"; state: S };
+type Action<S> = { type: 'set'; state: S };
 
 // Small hack to get typescript to infer the type of the state
 const createReducer =
     <S,>() =>
     (state: S, action: Action<S>): S => {
-        console.log("Executing", action.type);
+        console.log('Executing', action.type);
         switch (action.type) {
-            case "set":
+            case 'set':
                 return action.state;
             default:
-                throw new Error("Unknown action");
+                throw new Error('Unknown action');
         }
     };
 
@@ -24,14 +30,14 @@ const createReducer =
  *  (see) https://developer.mozilla.org/en-US/docs/Web/API/BroadcastChannel/BroadcastChannel
  */
 export function useBroadcast<S>(name, initialState: S) {
-    const [channel, setChannel] = useState<BroadcastChannel>();
+    const [channel, setChannel] = useState<StrictBroadcastChannel<Action<S>>>();
     const reducer = createReducer<S>();
     let [state, dispatch] = useReducer(reducer, initialState);
 
     // This makes sure we always have only one channel
     useEffect(() => {
-        const channel = new BroadcastChannel(name);
-        channel.onmessage = (event: MessageEvent) => {
+        const channel = new StrictBroadcastChannel<Action<S>>(name);
+        channel.onmessage = (event) => {
             event.preventDefault();
             dispatch(event.data);
         };
@@ -44,14 +50,14 @@ export function useBroadcast<S>(name, initialState: S) {
     // Function for the different actions
     function setState(value: S) {
         if (channel) {
-            channel.postMessage({ type: "set", state: value });
+            channel.postMessage({ type: 'set', state: value });
         } else {
             //timeout to make sure the channel is created
             setTimeout(() => {
                 setState(value);
             }, 1000);
         }
-        dispatch({ type: "set", state: value });
+        dispatch({ type: 'set', state: value });
     }
 
     return { state, setState };

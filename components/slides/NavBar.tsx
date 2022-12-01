@@ -1,6 +1,6 @@
-import { usePresentation } from "lib/context";
+import { usePresentation } from 'lib/context';
 
-import styles from "@theme/slides.module.scss";
+import styles from '@theme/slides.module.scss';
 
 interface Props extends React.HTMLAttributes<HTMLDivElement> {
     sections?: boolean;
@@ -88,7 +88,7 @@ interface PropsProgress extends React.HTMLAttributes<HTMLDivElement> {
 function ProgressBar({ current, total, label, ...divProps }: PropsProgress) {
     const steps = [];
     for (let i = 0; i < total; i++) {
-        let st = styles.step + " ";
+        let st = styles.step + ' ';
         if (i < current) {
             st += styles._completed;
         } else if (i == current) {
@@ -105,7 +105,7 @@ function ProgressBar({ current, total, label, ...divProps }: PropsProgress) {
     return (
         <div
             className={styles.progress}
-            style={{ width: total * 100 + "%" }}
+            style={{ width: total * 100 + '%' }}
             {...divProps}
         >
             <div className={styles.label}>{label}</div>
