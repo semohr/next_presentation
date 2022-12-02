@@ -2,6 +2,7 @@ import path from 'path';
 import fs from 'fs/promises';
 import matter from 'gray-matter';
 import { serialize } from 'next-mdx-remote/serialize';
+import rehypeHighlight from "rehype-highlight"
 
 // Where the slides are stored.
 export const SLIDES_PATH = path.join(process.cwd(), 'slides');
@@ -32,13 +33,16 @@ export async function getSlide(fName: string): Promise<Slide> {
     // Remove all note tags from the slide.
     const slide = content.replaceAll(/<Note>(.*?)<\/Note>/gs, '');
 
-    const mdxNotes = await serialize(notes, { scope: data });
+    const mdxNotes = await serialize(notes, {
+        scope: data,
+        mdxOptions: {
+            rehypePlugins: [rehypeHighlight]
+        }
+    });
 
     const mdxSource = await serialize(slide, {
-        // Optionally pass remark/rehype plugins
         mdxOptions: {
-            remarkPlugins: [],
-            rehypePlugins: []
+            rehypePlugins: [rehypeHighlight]
         },
         scope: data
     });
@@ -63,3 +67,4 @@ export async function allSlidesSorted(): Promise<Slide[]> {
 
     return allSlidesData;
 }
+rehypeHighlight
