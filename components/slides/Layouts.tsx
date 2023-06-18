@@ -2,6 +2,7 @@ import NavBar from './NavBar';
 import { SlideControl } from './Utils';
 
 import styles from '@theme/slides.module.scss';
+import { SnapExample } from './snap';
 
 export const Layouts = {
     // Layouts for slides
@@ -9,7 +10,13 @@ export const Layouts = {
     // ---
     default: {
         Navbar: (props) => <NavBar {...props} />,
-        SlideControl: (props) => <SlideControl {...props} />
+        SlideControl: (props) => <SlideControl {...props} />,
+        Quote: (props) => (
+            <div className={styles.quote} {...props}>
+                {props.children}
+            </div>
+        ),
+        Snap: (props) => <SnapExample {...props} />
     },
     titlepage: {
         Location: ({ loc1, loc2, ...props }) => (

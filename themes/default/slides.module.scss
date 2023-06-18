@@ -57,7 +57,7 @@ $navbar-height: 5rem;
         align-items: center;
         font-size: 1.2rem;
         padding: 1rem;
-        color: $light;
+        color: $dark;
         position: relative;
         display: flex;
         align-items: center;
@@ -86,15 +86,15 @@ $navbar-height: 5rem;
         .current {
             width: 50%;
             text-align: right;
-            font-size: 2rem;
+            font-size: 1.8rem;
             color: $dark;
             margin-right: 0.5rem;
         }
 
         .total {
             width: 50%;
-            font-size: 1.5rem;
-            color: $light;
+            font-size: 1.8rem;
+            color: $dark;
             text-align: left;
             font-weight: 300;
             // no text wrap
@@ -120,6 +120,7 @@ $navbar-height: 5rem;
         align-self: baseline;
         color: $primary;
         margin-top: 0;
+        margin-bottom: 0;
     }
     h2 {
         text-align: center;
@@ -135,7 +136,7 @@ $navbar-height: 5rem;
         font-size: 2.5rem;
     }
     p {
-        font-size: 2rem;
+        font-size: 2.5rem;
         text-align: left;
     }
 
@@ -143,6 +144,9 @@ $navbar-height: 5rem;
         color: $secondary;
         text-decoration: none;
         font-weight: 500;
+        p {
+            font-size: 1.5rem;
+        }
     }
 
     pre {
@@ -308,4 +312,26 @@ $borderWidth: calc($radiusNode / 4);
             background-color: $dark;
         }
     }
+}
+
+.quote {
+    display: flex;
+    padding: 10%;
+    p {
+        font-size: 5rem;
+        font-weight: 400;
+
+        strong {
+            color: $accent;
+        }
+    }
+}
+
+.snap {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    margin-left: 15rem;
+    justify-content: center;
+    position: relative;
 }
